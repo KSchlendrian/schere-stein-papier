@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glückspiel</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script defer src="./assets/js/main.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1>Schere - Stein - Papier</h1>
+    </section>
+    <section class="rounds">
+      <h2>How many rounds?</h2>
+      <input type="radio" name="rounds" id="5" checked />
+      <label for="5">5</label>
+      <input type="radio" name="rounds" id="10" />
+      <label for="10">10</label>
+      <input type="radio" name="rounds" id="15" />
+      <label for="15">15</label>
+      <input type="radio" name="rounds" id="20" />
+      <label for="20">20</label>
+    </section>
+    <section class="result">
+      <p>User</p>
+      <p class="score">0:0</p>
+      <p>Comp</p>
+    </section>
+    <section class="lets_play">
+      <p>Let's play</p>
+    </section>
+    <section class="choose">
+      <button id="schere">Schere</button>
+      <button id="stein">Stein</button>
+      <button id="papier">Papier</button>
+    </section>
+    <section class="restart">
+      <p>MAKE YOUR MOVE.</p>
+      <button>restart</button>
+    </section>
+  </body>
+</html>
