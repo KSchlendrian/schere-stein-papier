@@ -7,7 +7,7 @@
 
 // # result
 /*
-  - mit jeder runde die gespielt wird, muss sich das ergebnis um 1 erhähen => i++
+  - mit jeder runde die gespielt wird, muss sich das ergebnis um 1 erhöhen => i++
 */
 
 // # lets play
@@ -40,6 +40,7 @@
 // ! v0.2
 /*
   - rounds auswahl einarbeiten
+  - maximal runden einbauen
 */
 
 // ! v0.3
@@ -49,20 +50,29 @@
 
 // ! v0.4
 /*
-  - restart funktion einbauen
+- restart funktion einbauen
 */
 
 // ! v0.5
 /*
-  - css
+- css
 */
 
+// # HTML ELEMENTS
 const choiceBtn = document.querySelectorAll(".choose button");
 const displayWinner = document.querySelector(".lets_play");
 const score = document.querySelector(".score");
+const RoundInp = document.querySelectorAll(".rounds input");
+const radioBtns = document.querySelectorAll(".rounds input");
+const rounds = document.querySelector(".rounds");
+
+// # Globale Variablen
 let cpuScore = 0;
 let userScore = 0;
+let countRounds = 0;
+let maxRounds = 5;
 
+// # Random CPU Pick
 function cpuRandomPick() {
   const randomNumber = Math.ceil(Math.random() * 3);
   if (randomNumber === 1) {
@@ -74,10 +84,37 @@ function cpuRandomPick() {
   }
 }
 
+// # Rounds einarbeiten
+const roundPick = () => {
+  if (radioBtns[0].checked) {
+    maxRounds = 5;
+  } else if (radioBtns[1].checked) {
+    maxRounds = 10;
+  } else if (radioBtns[2].checked) {
+    maxRounds = 15;
+  } else if (radioBtns[3].checked) {
+    maxRounds = 20;
+  }
+};
+
+// #Core-Funkionalität
 choiceBtn.forEach((button) => {
   button.addEventListener("click", (event) => {
     let userPick = event.target.id;
     let cpuPick = cpuRandomPick();
+
+    if (countRounds === maxRounds) {
+      return;
+    }
+
+    if (countRounds === 0) {
+      roundPick();
+    }
+
+    countRounds++;
+    rounds.innerHTML = `${countRounds}/${maxRounds}`;
+
+    console.log(countRounds);
 
     // # User nimmt Schere
     if (userPick === "schere" && cpuPick === "schere") {
